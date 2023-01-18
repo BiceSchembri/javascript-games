@@ -1,10 +1,9 @@
-// Add box for game
+// Add heading and box for game
+const heading = document.createElement('h1');
+heading.innerText = ('How many pastéis de nata are there?');
 const gamebox = document.createElement('div');
 gamebox.classList.add('gamebox');
-document.body.appendChild(gamebox);
-
-// Add random number generator (1 to 28)
-const randomNum = Math.floor(Math.random() * 29);
+document.body.append(heading, gamebox);
 
 // Add submit form for user to enter number
 const form = document.createElement('form');
@@ -14,18 +13,32 @@ const button = document.createElement('button');
 form.append(label, input, button);
 gamebox.appendChild(form);
 
-// Add types etc to form elements
+// Set attributes for elements
 
-// label for:id
-// input type:number, id, name, minmax
-// button type:submit, role:button
+label.setAttribute('id', 'userGuess');
+input.setAttribute('type', 'number');
+input.setAttribute('id', 'userGuess');
 
+input.setAttribute('name', 'userGuess');
+input.setAttribute('min', 1);
+input.setAttribute('max', 28);
 
+button.setAttribute('type', 'submit');
+button.setAttribute('role', 'button');
+
+// Add inner text to elements
+label.innerText = ("Guess the number! Hint: it's between 1 and 28");
+button.innerText = ('button');
+
+// Add random number generator (1 to 28)
+const randomNum = Math.floor(Math.random() * 29);
+
+// button.addEventListener(onclick, () => {console.log('hello there')} );
 
 // Prevent default reloading of page on submit and test
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    console.log('cat');
+    console.log('number has been submitted');
 });
 
 // Compare submitted number with random number
