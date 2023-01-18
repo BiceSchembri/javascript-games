@@ -33,16 +33,19 @@ main.appendChild(gamebox);
 const rockButton = document.createElement('button');
 rockButton.setAttribute('id', 'rock');
 rockButton.setAttribute('type', 'button');
+rockButton.classList.add('userButton');
 rockButton.innerHTML = '&#129704;'
 
 const paperButton = document.createElement('button');
 paperButton.setAttribute('id', 'paper');
 paperButton.setAttribute('type', 'button');
+paperButton.classList.add('userButton');
 paperButton.innerHTML = '&#129531';
 
 const scissorsButton =  document.createElement('button');
 scissorsButton.setAttribute('id', 'scissors');
 scissorsButton.setAttribute('type', 'button');
+scissorsButton.classList.add('userButton');
 scissorsButton.innerHTML = '&#9986';
 
 const playButton = document.createElement('button');
@@ -59,35 +62,57 @@ message.innerText = 'This is the result!'
 messageBox.appendChild(message);
 main.appendChild(messageBox);
 
-// Add user choice
-let userChoice = '';
+// Add user choices with one event listener per button.
 
-rockButton.addEventListener('click', () => {
-    let userChoice = 'rock';
-    console.log(userChoice);
+let userButtons = document.querySelectorAll('button');
+userButtons.forEach(userButton => {
+    userButton.addEventListener('click', (event) => {
+        let userChoice = event.target.id;
+        console.log(userChoice);
+        event.target.classList.add('selected');
+    })
 });
 
-paperButton.addEventListener('click', () => {
-    let userChoice = 'paper';
-    console.log(userChoice);
-});
-
-scissorsButton.addEventListener('click', () => {
-    let userChoice = 'scissors';
-    console.log(userChoice);
-});
-
-
-// Create array of weapons
+// Create array of weapons for computer
 const weapons = [
     'rock',
     'paper',
     'scissors'
 ];
 
-console.log(weapons[0]);
+// Create function to get computer's choice. Generate random number between 0 and 2 for the weapon array index.
+
+const getComputerChoice = () => {
+    let computerChoice = weapons[Math.floor(Math.random() * 3)];
+    return computerChoice;
+}
+
+// Check computer choice. 
+// NOTE: hide for production.
+console.log(getComputerChoice());
+
 
 // User selects button - event
+playButton.addEventListener('click', () => {});
+
+
+
+// if (!userChoice) {
+//     alert('you must choose a weapon')
+// }
+
+//     else if (userChoice===computerChoice) {
+//         alert('draw!');
+//     }
+//     else if (((userChoice==='paper')&&(computerChoice==='scissors')) || ((userChoice==='rock')&&(computerChoice==='paper')) || ((userChoice==='scissors')&&(computerChoice==='rock'))) {
+//         alert('you lose!');
+//     }
+//     else {
+//         alert('you win!');
+//     }
+// });
+
+
 
 
 

@@ -34,6 +34,10 @@ button {
     background-color: orange;
 }
 
+button.selected {
+    outline: .2rem solid yellow;
+}
+
 footer {
     margin-top: auto;
 }
