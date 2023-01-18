@@ -1,6 +1,8 @@
 // Add heading, box for game, credits
+const header = document.createElement('header');
 const heading = document.createElement('h1');
 heading.innerText = ('How many pastéis de nata are there?');
+header.appendChild(heading);
 
 const gamebox = document.createElement('div');
 gamebox.classList.add('gamebox');
@@ -10,7 +12,7 @@ const credits = document.createElement('p');
 credits.innerHTML = ('Image by <a href="https://www.freepik.com/free-vector/background-seamless-pattern-vector-with-cute-memphis_15841841.htm#query=background%20pattern&position=30&from_view=search&track=sph">rawpixel.com</a> on Freepik');
 footer.appendChild(credits);
 
-document.body.append(heading, gamebox, footer);
+document.body.append(header, gamebox, footer);
 
 // Add submit form for user to enter number
 const form = document.createElement('form');
