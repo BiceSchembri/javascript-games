@@ -62,8 +62,9 @@ message.innerText = 'This is the result!'
 messageBox.appendChild(message);
 main.appendChild(messageBox);
 
-// Add user choices with one event listener per button.
+// ***end of HTML static creation***
 
+// Add user choices with one event listener per button.
 let userButtons = document.querySelectorAll('button');
 userButtons.forEach(userButton => {
     userButton.addEventListener('click', (event) => {
@@ -86,6 +87,8 @@ const getComputerChoice = () => {
     let computerChoice = weapons[Math.floor(Math.random() * 3)];
     return computerChoice;
 }
+
+getComputerChoice();
 
 // Check computer choice. 
 // NOTE: hide for production.
