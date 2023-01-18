@@ -91,11 +91,11 @@ const getComputerChoice = () => {
 // NOTE: hide for production.
 console.log(getComputerChoice());
 
-
 // User selects button - event
 playButton.addEventListener('click', () => {});
 
 
+// NOTE: play button should be disabled. Once user makes a choice, other choices are disabled and play button is made available. Then user has to click on play button and trigger other event, which compares values. 
 
 // if (!userChoice) {
 //     alert('you must choose a weapon')
