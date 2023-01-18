@@ -1,11 +1,16 @@
-// Add heading and box for game
+// Add heading, box for game, credits
 const heading = document.createElement('h1');
 heading.innerText = ('How many pastéis de nata are there?');
 
 const gamebox = document.createElement('div');
 gamebox.classList.add('gamebox');
 
-document.body.append(heading, gamebox);
+const footer = document.createElement('footer');
+const credits = document.createElement('p');
+credits.innerHTML = ('Image by <a href="https://www.freepik.com/free-vector/background-seamless-pattern-vector-with-cute-memphis_15841841.htm#query=background%20pattern&position=30&from_view=search&track=sph">rawpixel.com</a> on Freepik');
+footer.appendChild(credits);
+
+document.body.append(heading, gamebox, footer);
 
 // Add submit form for user to enter number
 const form = document.createElement('form');
@@ -29,7 +34,7 @@ input.setAttribute('max', 28);
 button.setAttribute('type', 'submit');
 button.setAttribute('role', 'button');
 
-// Add inner text to elements
+// Add inner text to form elements
 label.innerText = ("Guess the number! Hint: it's between 1 and 28");
 button.innerText = ('Guess');
 

@@ -5,12 +5,15 @@
 }
 
 body {
-    height: 100vh;
-    background-color: blue;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+    height: 100vh;
+    background-image: url(./bg-img.jpg);
+    background-color: antiquewhite;
+    background-repeat: repeat;
+    background-size: cover;
+    color: #84D2C5;
 }
 
 h1 {
@@ -20,17 +23,17 @@ h1 {
 
 .gamebox {
     background-color: whitesmoke;
-    outline: 5px solid red;
+    border: 2rem solid #E4C988;
     width: auto;
     height: auto;
 }
 
 form {
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
 }
 
 label {
@@ -39,6 +42,17 @@ label {
 
 button {
     display: block;
-    cursor: pointer;
     width: fit-content;
+    cursor: pointer;
+}
+
+footer {
+    padding: 2rem;
+    margin-top: auto;
+    color: #B05A7A;
+}
+a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #B05A7A;
 }
