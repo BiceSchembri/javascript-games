@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gamebox {
+    background-color: whitesmoke;
+    outline: 5px solid red;
+    width: 50%;
+    height: 40%;
+}
+
+form {
+    width: auto;
+    height: auto;
+}
