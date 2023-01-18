@@ -14,6 +14,33 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.gamebox {
+    background-color: #222;
+    color: whitesmoke;
+    width: 100%;
+    height: auto;
+}
+
+button {
+    cursor: pointer;
+    font-size: 5rem;
+    background-color: orange;
+}
+
 footer {
     margin-top: auto;
+}
+
+div>p {
+    padding: 3rem;
+    text-align: center;
+    background-color: green;
+    color: whitesmoke;
 }
