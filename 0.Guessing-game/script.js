@@ -36,31 +36,33 @@ button.innerText = ('Guess');
 // Add random number generator (1 to 28)
 const randomNum = Math.floor(Math.random() * 29);
 
+// Check random number
+console.log(randomNum);
+
 // Add event listener and define callback
 form.addEventListener('submit', (event) => {
 
-    // Prevent default reloading of page on submit and test
-    event.preventDefault();
-
+    // // Prevent default reloading of page on submit to test options. NOTE: remove for actual game to reload after a guess is submitted and the alert is displayed. 
+    // event.preventDefault();
 
     // Get submitted number
-    // let userGuess = 
-
-    // Compare submitted number with random number
+    let userGuess = input.value;
+    console.log(userGuess);
 
     // If correct, show message 1
-    let messageRight = (`Awesome! You number ${userGuess} was correct. You can be named many things, hungry not being one of them.`)
-    alert(messageRight);
+    if (userGuess == randomNum) {
+        let messageRight = (`Awesome! You number ${userGuess} was correct. You can be named many things, hungry not being one of them.`)
+        alert(messageRight);
+    }
+    // If incorrect, show message 2
+    else if (userGuess != randomNum) {
+        let messageWrong = (`Bummer... You guessed ${userGuess} and the secret number was ${randomNum}`);
+        alert(messageWrong);
+    }
 
-    // If incorrect by one, show message 2
-    let messageWrong = (`Bummer... You guessed ${userGuess} and the secret number was ${randomNum}`);
-    alert(messageWrong)
-
-    // Else, show message 3
-    let messageAlmost = ('So close, but you just missed it! Are you in a class that started on the thirteenth or what?');
-    alert(messageAlmost);
-
-    console.log('number has been submitted');
+    // // If incorrect by one, show message 3
+    // let messageAlmost = ('So close, but you just missed it! Are you in a class that started on the thirteenth or what?');
+    // alert(messageAlmost);
 });
 
 
