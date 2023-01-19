@@ -4,14 +4,11 @@ let computerChoice;
 // Create array of weapons for computer
 const options = ["rock", "paper", "scissors"];
 
-// Get the Play button
-const playButton = document.getElementById("play");
-
-// Create user buttons by looping through the options array. Place them before the Play button.
+// Create user buttons by looping through the options array. Place them in their div.
 options.forEach((option) => {
   let userButton = document.createElement("button");
-  let gamebox = document.querySelector(".gamebox");
-  gamebox.insertBefore(userButton, playButton);
+  let userButtonsBox = document.querySelector(".userButtonsBox");
+  userButtonsBox.appendChild(userButton);
   userButton.setAttribute("id", option);
   userButton.classList.add("userButton");
 });
@@ -24,21 +21,25 @@ paperButton.innerHTML = "&#129531";
 const scissorsButton = document.getElementById("scissors");
 scissorsButton.innerHTML = "&#9986";
 
-// Add event listener to user buttons
+// Select all buttons with a forEach method
 const userButtons = document.querySelectorAll(".userButton");
-
 userButtons.forEach((userButton) => {
+  //Add event listener to each button
   userButton.addEventListener("click", (event) => {
+    // When clicking on the button, the button id (rock, paper, or scissors) will be returned as userChoice.
     userChoice = event.target.id;
-    console.log(userChoice);
+    return userChoice;
     // event.target.classList.add('selected');
-    // allow play button to be clicked?
+    // display choice in text
   });
 });
 
-// Handle event
+// Add event listener to the Play button
+const playButton = document.getElementById("play");
+
 playButton.addEventListener("click", () => {
-  // Create function to get computer's choice. Generate random number between 0 and 2 for the weapon array index.
+
+  // Create function to get computer's choice. Generate random number between 0 and 2 which will determine the option's array index.
   const getComputerChoice = () => {
     computerChoice = options[Math.floor(Math.random() * options.length)];
     return computerChoice;
@@ -48,6 +49,7 @@ playButton.addEventListener("click", () => {
   console.log(`computer choice: ${getComputerChoice()}`);
   console.log(`user choice: ${userChoice}`);
 
+  // Compare user's choice with computer's choice to determine the winner.
   if (!userChoice) {
     alert("you must choose a weapon");
   } else if (userChoice === computerChoice) {
@@ -62,8 +64,6 @@ playButton.addEventListener("click", () => {
     alert("you win!");
   }
 });
-
-// NOTE: play button should be disabled. Once user makes a choice, other choices are disabled and play button is made available. Then user has to click on play button and trigger other event, which compares values.
 
 // const getResult = () => {
 //     switch (userChoice + computerChoice) {
@@ -84,8 +84,6 @@ playButton.addEventListener("click", () => {
 //                     break
 //     }
 // }
-
-// When user presses PLAY, computer chooses weapon randomly - event
 
 // Add result message
 const resultMessage = document.querySelector(".resultMessage");
