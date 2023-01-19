@@ -9,19 +9,19 @@ body {
     gap: 2rem;
     height: 100vh;
     width: 100vw;
-    background-color: aliceblue;
-    background-image: url('./memphis-pattern/810.jpg');
+    background-color: darkslategray;
+    /* background-image: url('./memphis-pattern/810.jpg'); */
     background-size: cover;
     background-repeat: repeat;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 header {
-    background-color: aliceblue;
-    color: #222;
     padding: 2rem;
-    border: .4rem solid darkslategray;
+    background-color: aliceblue;
     border-radius: 2rem;
+    color: #222;
 }
 
 main {
@@ -33,10 +33,12 @@ main {
 }
 
 .gamebox {
-    background-color: #222;
-    color: whitesmoke;
-    width: 70%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: auto;
     height: auto;
+    border: .2rem solid whitesmoke;
 }
 
 button {
@@ -47,18 +49,22 @@ button {
     border-radius: 2rem;
 }
 
-button.selected {
+.userButton.selected {
     outline: .2rem solid yellow;
+}
+
+#play {
+    margin-left: 2rem;
 }
 
 footer {
     margin-top: auto;
+    width: 100%;
     background-color: aliceblue;
 }
 
 div>p {
     padding: 3rem;
-    text-align: center;
     background-color: green;
     border-radius: 2rem;
     color: whitesmoke;

@@ -1,104 +1,84 @@
-// Change index document title
-document.title = 'Rock Paper Scissors';
+// Create array of weapons for computer
+const options = [
+    'rock',
+    'paper',
+    'scissors',
+];
 
-// Add a link to css file in the index.html head
-const stylesheet = document.createElement('link');
-stylesheet.setAttribute('rel', 'stylesheet');
-stylesheet.setAttribute('type', 'text/css');
-stylesheet.setAttribute('href', './style.css');
-document.head.append(stylesheet);
+// Get play button
+const playButton = document.getElementById('play');
 
-// Add header, main, footer
-const header = document.createElement('header');
-const main = document.createElement('main');
-const footer = document.createElement('footer');
-document.body.append(header, main, footer);
+// Create user buttons by looping through the options array
+options.forEach(option => {
+    let userButton = document.createElement('button');
+    let gamebox = document.querySelector('.gamebox');
+    gamebox.insertBefore(userButton, playButton);
+    userButton.setAttribute('id', option);
+    userButton.classList.add('userButton');
+});
 
-// Add heading in header
-const heading = document.createElement('h1');
-heading.innerText = 'Rock Paper Scissors';
-header.appendChild(heading);
-
-// Add credits in footer
-const credits = document.createElement('p');
-credits.innerHTML = '2023 - Beatrice'
-footer.appendChild(credits);
-
-// Add gamebox
-const gamebox = document.createElement('div');
-gamebox.classList.add('gamebox');
-main.appendChild(gamebox);
-
-// Add rock, paper, scissors buttons + play button
-const rockButton = document.createElement('button');
-rockButton.setAttribute('id', 'rock');
-rockButton.setAttribute('type', 'button');
-rockButton.classList.add('userButton');
-rockButton.innerHTML = '&#129704;'
-
-const paperButton = document.createElement('button');
-paperButton.setAttribute('id', 'paper');
-paperButton.setAttribute('type', 'button');
-paperButton.classList.add('userButton');
+// Get rock, paper, scissors buttons and set their content.
+const rockButton = document.getElementById('rock');
+rockButton.innerHTML = '&#129704';
+const paperButton = document.getElementById('paper');
 paperButton.innerHTML = '&#129531';
-
-const scissorsButton =  document.createElement('button');
-scissorsButton.setAttribute('id', 'scissors');
-scissorsButton.setAttribute('type', 'button');
-scissorsButton.classList.add('userButton');
+const scissorsButton = document.getElementById('scissors');
 scissorsButton.innerHTML = '&#9986';
 
-const playButton = document.createElement('button');
-playButton.setAttribute('id', 'play');
-playButton.setAttribute('type', 'button');
-playButton.innerHTML = 'PLAY';
 
-gamebox.append(rockButton, paperButton, scissorsButton, playButton);
 
-// Add result message with basic styling
-const messageBox = document.createElement('div');
-const message = document.createElement('p');
-message.innerText = 'This is the result!'
-messageBox.appendChild(message);
-main.appendChild(messageBox);
-
-// ***end of HTML static creation***
-
-// Add user choices with one event listener per button.
-let userButtons = document.querySelectorAll('button');
+// Add user choices: loop through user buttons and add an event listener to each.
+const userButtons = [document.querySelectorAll('button')];
+let userChoice; 
 userButtons.forEach(userButton => {
+
     userButton.addEventListener('click', (event) => {
-        let userChoice = event.target.id;
+        userChoice = event.target.id;
         console.log(userChoice);
         event.target.classList.add('selected');
+        // allow play button to be clicked?
     })
 });
 
-// Create array of weapons for computer
-const weapons = [
-    'rock',
-    'paper',
-    'scissors'
-];
 
 // Create function to get computer's choice. Generate random number between 0 and 2 for the weapon array index.
-
 const getComputerChoice = () => {
-    let computerChoice = weapons[Math.floor(Math.random() * 3)];
+    let computerChoice = weapons[Math.floor(Math.random() * options.length)];
     return computerChoice;
 }
 
-getComputerChoice();
+// // Check computer choice. NOTE: hide for production.
+console.log(`computer choice: ${getComputerChoice()}`);
+console.log(`user choice: ${userChoice}`);
 
-// Check computer choice. 
-// NOTE: hide for production.
-console.log(getComputerChoice());
+// // User selects button - event
+// playButton.addEventListener('click', () => {
 
-// User selects button - event
-playButton.addEventListener('click', () => {});
+// });
 
 
 // NOTE: play button should be disabled. Once user makes a choice, other choices are disabled and play button is made available. Then user has to click on play button and trigger other event, which compares values. 
+
+
+// const getResult = () => {
+//     switch (userChoice + computerChoice) {
+//         case 'scissorspaper':
+//         case 'rockscissors':
+//         case 'paperrock':
+//             resultMessage.innerHTML = 'You win!'
+//             break
+//         case 'paperscissors':
+//         case 'scissorsrock':
+//         case 'rockpaper':
+//             resultMessage.innerHTML = 'You lose!'
+//             break
+//         case 'scissorsscissors':
+//             case 'rockrock':
+//                 case 'paperpaper':
+//                     resultMessage.innerHTML = "Draw!"
+//                     break
+//     }
+// }
 
 // if (!userChoice) {
 //     alert('you must choose a weapon')
@@ -117,11 +97,15 @@ playButton.addEventListener('click', () => {});
 
 
 
-
-
 // When user presses PLAY, computer chooses weapon randomly - event
 
-// Change inner HTML of result message
+
+// Add result message
+const resultMessage = document.querySelector('.resultMessage');
+// CHANGE TO DISPLAY RESULT
+// resultMessage.innerHTML = 'This is the result!'
+// CHANGE STYLING. ADD IMAGE?
+
 
 // Fix styling
 
