@@ -21,29 +21,30 @@ paperButton.innerHTML = "&#129531";
 const scissorsButton = document.getElementById("scissors");
 scissorsButton.innerHTML = "&#9986";
 
-// Select all buttons with a forEach method
+// Define function for user choice event. When function is called, the id of the target (rock, paper, scissors) is set as userChoice.
+
+const userChooses = (e) => {
+  userChoice = e.target.id;
+  return userChoice;
+  // event.target.classList.add('selected');
+  // display choice in text
+};
+
+// Select all buttons with a forEach method and add an event listener. When a button is clicked, the userChooses function is called.
 const userButtons = document.querySelectorAll(".userButton");
 userButtons.forEach((userButton) => {
-  //Add event listener to each button
-  userButton.addEventListener("click", (event) => {
-    // When clicking on the button, the button id (rock, paper, or scissors) will be returned as userChoice.
-    userChoice = event.target.id;
-    return userChoice;
-    // event.target.classList.add('selected');
-    // display choice in text
-  });
+  userButton.addEventListener("click", userChooses);
 });
 
-// Add event listener to the Play button
-const playButton = document.getElementById("play");
+// Create function to get computer's choice. Generate random number between 0 and 2 (which will determine the option's array index).
+const getComputerChoice = () => {
+  computerChoice = options[Math.floor(Math.random() * options.length)];
+  return computerChoice;
+};
 
-playButton.addEventListener("click", () => {
-
-  // Create function to get computer's choice. Generate random number between 0 and 2 which will determine the option's array index.
-  const getComputerChoice = () => {
-    computerChoice = options[Math.floor(Math.random() * options.length)];
-    return computerChoice;
-  };
+// Create function for the Play button event.
+const playGame = () => {
+  getComputerChoice();
 
   // Check choices. NOTE: hide for production.
   console.log(`computer choice: ${getComputerChoice()}`);
@@ -63,7 +64,11 @@ playButton.addEventListener("click", () => {
   } else {
     alert("you win!");
   }
-});
+};
+
+// Add event listener to the Play button.
+const playButton = document.getElementById("play");
+playButton.addEventListener("click", playGame);
 
 // const getResult = () => {
 //     switch (userChoice + computerChoice) {
