@@ -1,3 +1,4 @@
+// Define choices (will be used in functions later on)
 let userChoice;
 let computerChoice;
 
@@ -34,6 +35,7 @@ const userChooses = (e) => {
 const userButtons = document.querySelectorAll(".userButton");
 userButtons.forEach((userButton) => {
   userButton.addEventListener("click", userChooses);
+//   userButton.addEventListener("click", selectedButton);
 });
 
 // Create function to get computer's choice. Generate random number between 0 and 2 (which will determine the option's array index).
@@ -94,10 +96,3 @@ playButton.addEventListener("click", playGame);
 const resultMessage = document.querySelector(".resultMessage");
 // CHANGE TO DISPLAY RESULT
 // resultMessage.innerHTML = 'This is the result!'
-// CHANGE STYLING. ADD IMAGE?
-
-// Fix styling
-
-// Clean code
-
-// Write readme

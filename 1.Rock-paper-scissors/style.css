@@ -59,8 +59,8 @@ button {
     border-radius: 2rem;
 }
 
-.userButton.selected {
-    outline: .2rem solid yellow;
+.userButton:focus {
+    border: .3rem solid red;
 }
 
 #play {    
