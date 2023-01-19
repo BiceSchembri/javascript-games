@@ -81,7 +81,11 @@ button {
     font-size: 1rem;
 }
 
-.choiceDisplayBox {
+#playAgain {
+    background-color: aquamarine;
+}
+
+#choiceDisplayBox {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -89,6 +93,10 @@ button {
     align-items: center;
     justify-content: center;
     width: 100%;
+}
+
+.hidden {
+    display: none;
 }
 
 figcaption {
