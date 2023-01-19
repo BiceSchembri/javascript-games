@@ -1,6 +1,9 @@
-// Define choices (will be used in functions later on)
+// Define elements (will be used in functions later on)
 let userChoice;
 let computerChoice;
+const choiceDisplayBox = document.getElementById("choiceDisplayBox");
+const userChoiceCaption = document.getElementById("userChoiceCaption");
+const userChoiceImg = document.getElementById("userChoiceImg");
 
 // Create array of weapons for computer
 const options = ["rock", "paper", "scissors"];
@@ -28,11 +31,8 @@ const userChooses = (e) => {
   userChoice = e.target.id;
 
   // Display user choice with a caption and a gif
-  let choiceDisplayBox = document.getElementById('choiceDisplayBox');
-  choiceDisplayBox.classList.remove('hidden');
-  let userChoiceCaption = document.getElementById("userChoiceCaption");
+  choiceDisplayBox.style.display = 'flex';
   userChoiceCaption.innerHTML = `You chose: ${userChoice}`;
-  let userChoiceImg = document.getElementById("userChoiceImg");
   userChoiceImg.setAttribute("src", `./img/${userChoice}.gif`);
   userChoiceImg.setAttribute("alt", `gif of a ${userChoice}`);
 };
@@ -59,17 +59,21 @@ const displayComputerChoice = () => {
   computerChoiceImg.setAttribute("alt", `gif of a ${computerChoice}`);
 };
 
+const playAgainButton = document.createElement("button");
+playAgainButton.style.display = "none";
+
 // Create function to play again after one round
 const displayPlayAgain = () => {
-    const playAgainButton = document.createElement('button');
-    playAgainButton.setAttribute('id', 'playAgain');
-    playAgainButton.innerHTML = 'ONE MORE?';
-    let gameButtonsBox = document.querySelector('.gameButtonsBox');
-    gameButtonsBox.appendChild(playAgainButton);
-}
+  playAgainButton.style.display = "inline-block";
+  playAgainButton.setAttribute("id", "playAgain");
+  playAgainButton.innerHTML = "ONE MORE?";
+  let gameButtonsBox = document.querySelector(".gameButtonsBox");
+  gameButtonsBox.appendChild(playAgainButton);
+};
 
 // Create functions for win/lose/draw cases
 const resultMessage = document.querySelector(".resultMessage");
+resultMessage.innerHTML = "The result will be announced here";
 
 const win = () => {
   displayComputerChoice();
@@ -100,7 +104,6 @@ const draw = () => {
 
 // Create event function for the Play button event, and add previous functions to it.
 const playGame = () => {
-
   // Get the computer choice: rock, paper, scissors
   getComputerChoice();
 
@@ -108,7 +111,6 @@ const playGame = () => {
   if (!userChoice) {
     alert("First make your choice!");
   } else {
-
     // Add switch statement to execute win/lose/draw functions
     switch (userChoice + computerChoice) {
       case "scissorspaper":
@@ -133,17 +135,23 @@ const playGame = () => {
 const playButton = document.getElementById("play");
 playButton.addEventListener("click", playGame);
 
-// Add Play Again event function. Starts a new round
+// Add Play Again event function to start a new round. The previous user choice and computer choice are hidden. The play again button is hidden once clicked.
 const playAgain = (e) => {
-    if (e.target.id == 'playAgain') {
-        document.body.style.backgroundColor = 'red';
-        // choiceDisplayBox.classList.add('hidden');
-        // removes itself
-    }
+  if (e.target.id == "playAgain") {
+    choiceDisplayBox.style.display = 'none';
+    // userChoiceCaption.innerHTML = "";
+    // userChoiceImg.removeAttribute("src");
+    // userChoiceImg.removeAttribute("alt");
+    // computerChoiceCaption.innerHTML = "";
+    // computerChoiceImg.removeAttribute("src");
+    // computerChoiceImg.removeAttribute("alt");
+    resultMessage.classList.remove("draw");
+    resultMessage.classList.remove("lose");
+    resultMessage.classList.remove("win");
+    resultMessage.innerHTML = "The result will be announced here";
+    playAgainButton.style.display = "none";
+  }
 };
 
-// Add event listener for Play Again Button
-document.addEventListener('click', playAgain);
-
-
-// Since we have to bind an event to dynamically created elements, we use bubbling. We target the parent element (or whole document), then we check if a user clicks on the element with the specified class.
+// Add event listener for Play Again Button (via bubbling, since it is a dynamically created element)
+document.addEventListener("click", playAgain);

@@ -86,17 +86,14 @@ button {
 }
 
 #choiceDisplayBox {
-    display: flex;
+    display: none;
+    /* display: flex; */
     flex-direction: row;
     flex-wrap: wrap;
     gap: .5rem;
     align-items: center;
     justify-content: center;
     width: 100%;
-}
-
-.hidden {
-    display: none;
 }
 
 figcaption {
