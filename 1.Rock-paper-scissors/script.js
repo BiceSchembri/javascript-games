@@ -48,52 +48,59 @@ const getComputerChoice = () => {
   return computerChoice;
 };
 
-// Create functiona for win/lose/draw cases
+// Create function to display computer choice
+const displayComputerChoice = () => {
+    let computerChoiceCaption = document.getElementById("computerChoiceCaption");
+    computerChoiceCaption.innerHTML = `Computer chose: ${computerChoice}`;
+    let computerChoiceImg = document.getElementById("computerChoiceImg");
+    computerChoiceImg.setAttribute("src", `./img/${computerChoice}.gif`);
+    computerChoiceImg.setAttribute("alt", `gif of a ${computerChoice}`);
+  };
+
+// Create functions for win/lose/draw cases
 const resultMessage = document.querySelector(".resultMessage");
 
 const win = () => {
+  displayComputerChoice();
   resultMessage.classList.remove("lose");
   resultMessage.classList.remove("draw");
   resultMessage.classList.add("win");
   resultMessage.innerHTML = "Yay! You win";
 };
 const lose = () => {
+  displayComputerChoice();
   resultMessage.classList.remove("win");
   resultMessage.classList.remove("draw");
   resultMessage.classList.add("lose");
   resultMessage.innerHTML = "Oh no! You lost";
 };
 const draw = () => {
+  displayComputerChoice();
   resultMessage.classList.remove("win");
   resultMessage.classList.remove("lose");
   resultMessage.classList.add("draw");
   resultMessage.innerHTML = "It's a draw";
 };
 
-const displayComputerChoice = () => {
-  let computerChoiceCaption = document.getElementById("computerChoiceCaption");
-  computerChoiceCaption.innerHTML = `Computer chose: ${computerChoice}`;
-  let computerChoiceImg = document.getElementById("computerChoiceImg");
-  computerChoiceImg.setAttribute("src", `./img/${computerChoice}.gif`);
-  computerChoiceImg.setAttribute("alt", `gif of a ${computerChoice}`);
-};
+// Create function to play again after one round
+// const displayPlayAgain = () => {
+//     let document.createElement('button');
 
-// Create function for the Play button event. It calls other functions and contains a switch statement.
+// }
+
+// Create function for the Play button event amd add previous functions.
 const playGame = () => {
+
   // Get the computer choice: rock, paper, scissors
   getComputerChoice();
-
-  // Check choices. NOTE: hide for production.
-  // console.log(`user choice: ${userChoice}`);
-  // console.log(`computer choice: ${getComputerChoice()}`);
 
   // Alert user if they haven't made a choice yet
   if (!userChoice) {
     alert("First make your choice!");
   }
+  else {
 
-  // Add switch statements for win/lose/draw scenarios
-
+  // Add switch statement to execute win/lose/draw functions
   switch (userChoice + computerChoice) {
     case "scissorspaper":
     case "rockscissors":
@@ -110,9 +117,8 @@ const playGame = () => {
     case "paperpaper":
       draw();
   }
-
-  // Display computer choice next to user choice with gif and caption
-  displayComputerChoice();
+  }
+//   displayPlayAgain();
 };
 
 // Add event listener to the Play button.
