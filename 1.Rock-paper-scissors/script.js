@@ -26,73 +26,95 @@ scissorsButton.innerHTML = "&#9986";
 
 const userChooses = (e) => {
   userChoice = e.target.id;
-  return userChoice;
-  // event.target.classList.add('selected');
-  // display choice in text
+
+  // Display user choice with a caption and a gif
+  let userChoiceCaption = document.getElementById("userChoiceCaption");
+  userChoiceCaption.innerHTML = `You chose: ${userChoice}`;
+  let userChoiceImg = document.getElementById("userChoiceImg");
+  userChoiceImg.setAttribute("src", `./img/${userChoice}.gif`);
+  userChoiceImg.setAttribute("alt", `gif of a ${userChoice}`);
 };
 
 // Select all buttons with a forEach method and add an event listener. When a button is clicked, the userChooses function is called.
 const userButtons = document.querySelectorAll(".userButton");
 userButtons.forEach((userButton) => {
   userButton.addEventListener("click", userChooses);
-//   userButton.addEventListener("click", selectedButton);
+  return userChoice;
 });
 
-// Create function to get computer's choice. Generate random number between 0 and 2 (which will determine the option's array index).
+// Create function to allow the computer to choose an option: generate random number between 0 and 2 (which will determine the option's array index).
 const getComputerChoice = () => {
   computerChoice = options[Math.floor(Math.random() * options.length)];
   return computerChoice;
 };
 
-// Create function for the Play button event.
+// Create functiona for win/lose/draw cases
+const resultMessage = document.querySelector(".resultMessage");
+
+const win = () => {
+  resultMessage.classList.remove("lose");
+  resultMessage.classList.remove("draw");
+  resultMessage.classList.add("win");
+  resultMessage.innerHTML = "Yay! You win";
+};
+const lose = () => {
+  resultMessage.classList.remove("win");
+  resultMessage.classList.remove("draw");
+  resultMessage.classList.add("lose");
+  resultMessage.innerHTML = "Oh no! You lost";
+};
+const draw = () => {
+  resultMessage.classList.remove("win");
+  resultMessage.classList.remove("lose");
+  resultMessage.classList.add("draw");
+  resultMessage.innerHTML = "It's a draw";
+};
+
+const displayComputerChoice = () => {
+  let computerChoiceCaption = document.getElementById("computerChoiceCaption");
+  computerChoiceCaption.innerHTML = `Computer chose: ${computerChoice}`;
+  let computerChoiceImg = document.getElementById("computerChoiceImg");
+  computerChoiceImg.setAttribute("src", `./img/${computerChoice}.gif`);
+  computerChoiceImg.setAttribute("alt", `gif of a ${computerChoice}`);
+};
+
+// Create function for the Play button event. It calls other functions and contains a switch statement.
 const playGame = () => {
+  // Get the computer choice: rock, paper, scissors
   getComputerChoice();
 
   // Check choices. NOTE: hide for production.
-  console.log(`computer choice: ${getComputerChoice()}`);
-  console.log(`user choice: ${userChoice}`);
+  // console.log(`user choice: ${userChoice}`);
+  // console.log(`computer choice: ${getComputerChoice()}`);
 
-  // Compare user's choice with computer's choice to determine the winner.
+  // Alert user if they haven't made a choice yet
   if (!userChoice) {
-    alert("you must choose a weapon");
-  } else if (userChoice === computerChoice) {
-    alert("draw!");
-  } else if (
-    (userChoice === "paper" && computerChoice === "scissors") ||
-    (userChoice === "rock" && computerChoice === "paper") ||
-    (userChoice === "scissors" && computerChoice === "rock")
-  ) {
-    alert("you lose!");
-  } else {
-    alert("you win!");
+    alert("First make your choice!");
   }
+
+  // Add switch statements for win/lose/draw scenarios
+
+  switch (userChoice + computerChoice) {
+    case "scissorspaper":
+    case "rockscissors":
+    case "paperrock":
+      win();
+      break;
+    case "paperscissors":
+    case "scissorsrock":
+    case "rockpaper":
+      lose();
+      break;
+    case "scissorsscissors":
+    case "rockrock":
+    case "paperpaper":
+      draw();
+  }
+
+  // Display computer choice next to user choice with gif and caption
+  displayComputerChoice();
 };
 
 // Add event listener to the Play button.
 const playButton = document.getElementById("play");
 playButton.addEventListener("click", playGame);
-
-// const getResult = () => {
-//     switch (userChoice + computerChoice) {
-//         case 'scissorspaper':
-//         case 'rockscissors':
-//         case 'paperrock':
-//             resultMessage.innerHTML = 'You win!'
-//             break
-//         case 'paperscissors':
-//         case 'scissorsrock':
-//         case 'rockpaper':
-//             resultMessage.innerHTML = 'You lose!'
-//             break
-//         case 'scissorsscissors':
-//             case 'rockrock':
-//                 case 'paperpaper':
-//                     resultMessage.innerHTML = "Draw!"
-//                     break
-//     }
-// }
-
-// Add result message
-const resultMessage = document.querySelector(".resultMessage");
-// CHANGE TO DISPLAY RESULT
-// resultMessage.innerHTML = 'This is the result!'
