@@ -50,12 +50,12 @@ const getComputerChoice = () => {
 
 // Create function to display computer choice
 const displayComputerChoice = () => {
-    let computerChoiceCaption = document.getElementById("computerChoiceCaption");
-    computerChoiceCaption.innerHTML = `Computer chose: ${computerChoice}`;
-    let computerChoiceImg = document.getElementById("computerChoiceImg");
-    computerChoiceImg.setAttribute("src", `./img/${computerChoice}.gif`);
-    computerChoiceImg.setAttribute("alt", `gif of a ${computerChoice}`);
-  };
+  let computerChoiceCaption = document.getElementById("computerChoiceCaption");
+  computerChoiceCaption.innerHTML = `Computer chose: ${computerChoice}`;
+  let computerChoiceImg = document.getElementById("computerChoiceImg");
+  computerChoiceImg.setAttribute("src", `./img/${computerChoice}.gif`);
+  computerChoiceImg.setAttribute("alt", `gif of a ${computerChoice}`);
+};
 
 // Create functions for win/lose/draw cases
 const resultMessage = document.querySelector(".resultMessage");
@@ -66,6 +66,7 @@ const win = () => {
   resultMessage.classList.remove("draw");
   resultMessage.classList.add("win");
   resultMessage.innerHTML = "Yay! You win";
+  displayPlayAgain();
 };
 const lose = () => {
   displayComputerChoice();
@@ -73,6 +74,7 @@ const lose = () => {
   resultMessage.classList.remove("draw");
   resultMessage.classList.add("lose");
   resultMessage.innerHTML = "Oh no! You lost";
+  displayPlayAgain();
 };
 const draw = () => {
   displayComputerChoice();
@@ -80,47 +82,58 @@ const draw = () => {
   resultMessage.classList.remove("lose");
   resultMessage.classList.add("draw");
   resultMessage.innerHTML = "It's a draw";
+  displayPlayAgain();
 };
 
 // Create function to play again after one round
-// const displayPlayAgain = () => {
-//     let document.createElement('button');
+const displayPlayAgain = () => {
+    const playAgainButton = document.createElement('button');
+    playAgainButton.setAttribute('id', 'playAgain');
+    playAgainButton.innerHTML = 'ONE MORE?';
+    let gameButtonsBox = document.querySelector('.gameButtonsBox');
+    gameButtonsBox.appendChild(playAgainButton);
+}
 
-// }
-
-// Create function for the Play button event amd add previous functions.
+// Create event function for the Play button event, and add previous functions to it.
 const playGame = () => {
 
   // Get the computer choice: rock, paper, scissors
   getComputerChoice();
 
-  // Alert user if they haven't made a choice yet
+  // Alert user if they haven't made a choice yet.
   if (!userChoice) {
     alert("First make your choice!");
-  }
-  else {
+  } else {
 
-  // Add switch statement to execute win/lose/draw functions
-  switch (userChoice + computerChoice) {
-    case "scissorspaper":
-    case "rockscissors":
-    case "paperrock":
-      win();
-      break;
-    case "paperscissors":
-    case "scissorsrock":
-    case "rockpaper":
-      lose();
-      break;
-    case "scissorsscissors":
-    case "rockrock":
-    case "paperpaper":
-      draw();
+    // Add switch statement to execute win/lose/draw functions
+    switch (userChoice + computerChoice) {
+      case "scissorspaper":
+      case "rockscissors":
+      case "paperrock":
+        win();
+        break;
+      case "paperscissors":
+      case "scissorsrock":
+      case "rockpaper":
+        lose();
+        break;
+      case "scissorsscissors":
+      case "rockrock":
+      case "paperpaper":
+        draw();
+    }
   }
-  }
-//   displayPlayAgain();
 };
 
 // Add event listener to the Play button.
 const playButton = document.getElementById("play");
 playButton.addEventListener("click", playGame);
+
+// Add Play Again event function. Starts a new round
+const playAgain = () => {
+    // removes user and computer choice display
+    // removes itself
+}
+
+// Add event listener for Play Again Button
+playAgainButton.addEventListener('click', playAgain);

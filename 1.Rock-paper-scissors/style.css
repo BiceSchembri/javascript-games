@@ -65,12 +65,20 @@ button {
     outline: .2rem solid yellow;
 }
 
-#play {    
-    width: auto;
+.gameButtonsBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#play, #playAgain {    
+    width: max-content;
     padding: 1rem;
     margin-top: 1rem;
     background-color: greenyellow;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .choiceDisplayBox {
