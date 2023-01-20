@@ -37,7 +37,6 @@ main {
 #scoreBox {
     display: flex;
     flex-direction: row;
-    width: 100%;
     gap: 1rem;
 }
 #userScoreBox, #computerScoreBox {
@@ -47,14 +46,14 @@ main {
     justify-content: center;
     gap: 1.2rem;
     height: 6rem;
-    width: 100%;
     background-color: violet;
     border-radius: 1rem;
     color: #222;
 }
 
 h2 {
-    font-size: 1.1rem;
+    font-size: .9rem;
+    padding: 0 .2rem;
 }
 
 #userScore, #computerScore {
@@ -65,8 +64,6 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: auto;
-    height: auto;
 }
 
 button {
@@ -80,6 +77,11 @@ button {
 
 #userButtonsBox {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: auto;
     gap: 1rem;
 }
 .userButton {
@@ -98,30 +100,32 @@ button {
     gap: 1rem;
 }
 
-#play {    
+.playButton {    
     width: max-content;
     padding: 1rem;
     font-size: 1rem;
 }
-
-.playButton {
+#playGame {
     background-color: greenyellow;
     color: #222;
 }
 
-.playAgain {
+#playAgain {
+    display: none;
+    width: max-content;
+    padding: 1rem;
+    font-size: 1rem;
     background-color: #222;
     color: greenyellow;
 }
 
 #choiceDisplayBox {
-    display: none;
-    /* display: flex; */
+    display: flex;
     flex-direction: row;
     gap: .5rem;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: auto;
 }
 
 figcaption {
