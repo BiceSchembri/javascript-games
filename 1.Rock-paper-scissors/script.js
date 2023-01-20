@@ -1,9 +1,12 @@
-// Define elements (will be used in functions later on)
+// Declare variables (will be used in functions later on)
 let userChoice;
 let computerChoice;
 const choiceDisplayBox = document.getElementById("choiceDisplayBox");
 const userChoiceCaption = document.getElementById("userChoiceCaption");
 const userChoiceImg = document.getElementById("userChoiceImg");
+const userScore = document.getElementById('userScore');
+const computerScore = document.getElementById('computerScore');
+const playButton = document.getElementById("play");
 
 // Create array of weapons for computer
 const options = ["rock", "paper", "scissors"];
@@ -59,16 +62,27 @@ const displayComputerChoice = () => {
   computerChoiceImg.setAttribute("alt", `gif of a ${computerChoice}`);
 };
 
-const playAgainButton = document.createElement("button");
-playAgainButton.style.display = "none";
+// Play Again starts a new round. The previous user choice and computer choice are hidden, the button goes back to its original styling and text PLAY, but the scores are kept.
+const playAgain = () => {
+  choiceDisplayBox.style.display = 'none';
+  resultMessage.classList.remove("draw");
+  resultMessage.classList.remove("lose");
+  resultMessage.classList.remove("win");
+  resultMessage.classList.add("default");
+  resultMessage.innerHTML = "The result will be announced here";
+  playButton.classList.remove('playAgain');
+  playButton.classList.add('playButton');
+  playButton.innerHTML = "PLAY";
+  playButton.addEventListener('click', playGame);
+};
 
-// Create function to play again after one round
+// Define function to change Play to Play Again once game is played.
 const displayPlayAgain = () => {
-  playAgainButton.style.display = "inline-block";
-  playAgainButton.setAttribute("id", "playAgain");
-  playAgainButton.innerHTML = "ONE MORE?";
-  let gameButtonsBox = document.getElementById("gameButtonsBox");
-  gameButtonsBox.appendChild(playAgainButton);
+  playButton.classList.remove('playButton');
+  playButton.classList.add('playAgain');
+  playButton.innerHTML = "ONE MORE?";
+  playButton.removeEventListener('click', playGame);
+  playButton.addEventListener('click', playAgain);
 };
 
 // Create functions for win/lose/draw cases
@@ -77,24 +91,29 @@ resultMessage.innerHTML = "The result will be announced here";
 
 const win = () => {
   displayComputerChoice();
+  resultMessage.classList.remove("default");
   resultMessage.classList.remove("lose");
   resultMessage.classList.remove("draw");
   resultMessage.classList.add("win");
   resultMessage.innerHTML = "Yay! You win";
+  userScore.innerHTML = parseInt(userScore.innerHTML)+1;
   displayPlayAgain();
 };
 
 const lose = () => {
   displayComputerChoice();
+  resultMessage.classList.remove("default");
   resultMessage.classList.remove("win");
   resultMessage.classList.remove("draw");
   resultMessage.classList.add("lose");
   resultMessage.innerHTML = "Oh no! You lost";
+  computerScore.innerHTML = parseInt(computerScore.innerHTML)+1;
   displayPlayAgain();
 };
 
 const draw = () => {
   displayComputerChoice();
+  resultMessage.classList.remove("default");
   resultMessage.classList.remove("win");
   resultMessage.classList.remove("lose");
   resultMessage.classList.add("draw");
@@ -132,26 +151,4 @@ const playGame = () => {
 };
 
 // Add event listener to the Play button.
-const playButton = document.getElementById("play");
 playButton.addEventListener("click", playGame);
-
-// Add Play Again event function to start a new round. The previous user choice and computer choice are hidden. The play again button is hidden once clicked.
-const playAgain = (e) => {
-  if (e.target.id == "playAgain") {
-    choiceDisplayBox.style.display = 'none';
-    // userChoiceCaption.innerHTML = "";
-    // userChoiceImg.removeAttribute("src");
-    // userChoiceImg.removeAttribute("alt");
-    // computerChoiceCaption.innerHTML = "";
-    // computerChoiceImg.removeAttribute("src");
-    // computerChoiceImg.removeAttribute("alt");
-    resultMessage.classList.remove("draw");
-    resultMessage.classList.remove("lose");
-    resultMessage.classList.remove("win");
-    resultMessage.innerHTML = "The result will be announced here";
-    playAgainButton.style.display = "none";
-  }
-};
-
-// Add event listener for Play Again Button (via bubbling, since it is a dynamically created element)
-document.addEventListener("click", playAgain);

@@ -98,15 +98,20 @@ button {
     gap: 1rem;
 }
 
-#play, #playAgain {    
+#play {    
     width: max-content;
     padding: 1rem;
-    background-color: greenyellow;
     font-size: 1rem;
 }
 
-#playAgain {
-    background-color: aquamarine;
+.playButton {
+    background-color: greenyellow;
+    color: #222;
+}
+
+.playAgain {
+    background-color: #222;
+    color: greenyellow;
 }
 
 #choiceDisplayBox {
@@ -136,8 +141,11 @@ figcaption {
 #resultMessage {
     width: fit-content;
     padding: 1rem;
-    background-color: bisque;
     border-radius: 1rem;
+}
+
+.default {
+    background-color: bisque;
     color: #222;
 }
 
