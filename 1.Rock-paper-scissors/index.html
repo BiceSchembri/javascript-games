@@ -15,16 +15,24 @@
         <h1>Rock Paper Scissors</h1>
     </header>
     <main>
-        <div class="scoreBox">
-
-        </div>
-        <div class='gameBox'>
-            <div class="userButtonsBox"></div>
-            <div class="gameButtonsBox">
-                <button id='play'>PLAY</button>
+        <div id="scoreBox">
+            <div id="userScoreBox">
+                <h2>Your Score:</h2>
+                <p id="userScore">0</p>
+            </div>
+            <div id="computerScoreBox">
+                <h2>Computer Score:</h2>
+                <p id="computerScore">0</p>
             </div>
         </div>
-        <div class="resultBox">
+        <div id="gameBox">
+            <div id="userButtonsBox"></div>
+            <div id="gameButtonsBox">
+                <button id="play">PLAY</button>
+            </div>
+        </div>
+        <div id="resultBox">
+            <p id="resultMessage"></p>
             <div id="choiceDisplayBox">
                 <figure>
                     <figcaption id="userChoiceCaption"></figcaption>
@@ -35,7 +43,6 @@
                     <img id="computerChoiceImg">
                 </figure>
             </div>
-            <p class="resultMessage"></p>
         </div>
     </main>
     <footer>

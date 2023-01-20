@@ -11,7 +11,7 @@ const options = ["rock", "paper", "scissors"];
 // Create user buttons by looping through the options array. Place them in their div.
 options.forEach((option) => {
   let userButton = document.createElement("button");
-  let userButtonsBox = document.querySelector(".userButtonsBox");
+  let userButtonsBox = document.getElementById("userButtonsBox");
   userButtonsBox.appendChild(userButton);
   userButton.setAttribute("id", option);
   userButton.classList.add("userButton");
@@ -67,12 +67,12 @@ const displayPlayAgain = () => {
   playAgainButton.style.display = "inline-block";
   playAgainButton.setAttribute("id", "playAgain");
   playAgainButton.innerHTML = "ONE MORE?";
-  let gameButtonsBox = document.querySelector(".gameButtonsBox");
+  let gameButtonsBox = document.getElementById("gameButtonsBox");
   gameButtonsBox.appendChild(playAgainButton);
 };
 
 // Create functions for win/lose/draw cases
-const resultMessage = document.querySelector(".resultMessage");
+const resultMessage = document.getElementById("resultMessage");
 resultMessage.innerHTML = "The result will be announced here";
 
 const win = () => {

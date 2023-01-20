@@ -8,14 +8,13 @@
 body {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
     height: 100vh;
-    width: 100vw;
     background-color: darkslategray;
     background-size: cover;
     background-repeat: repeat;
-    align-items: center;
-    justify-content: center;
     font-family: 'Questrial', sans-serif;
     text-align: center;
 }
@@ -31,14 +30,40 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.2rem;
     align-items: center;
     justify-content: center;
 }
-
-.gamebox {
+#scoreBox {
     display: flex;
     flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+}
+#userScoreBox, #computerScoreBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    height: 6rem;
+    width: 100%;
+    background-color: violet;
+    border-radius: 1rem;
+    color: #222;
+}
+
+h2 {
+    font-size: 1.1rem;
+}
+
+#userScore, #computerScore {
+    font-size: 2rem;
+}
+
+#gameBox {
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
     width: auto;
     height: auto;
@@ -53,7 +78,7 @@ button {
     box-shadow: 0 0 8px rgb(207, 207, 207);
 }
 
-.userButtonsBox {
+#userButtonsBox {
     display: flex;
     gap: 1rem;
 }
@@ -65,7 +90,7 @@ button {
     outline: .2rem solid yellow;
 }
 
-.gameButtonsBox {
+#gameButtonsBox {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -76,7 +101,6 @@ button {
 #play, #playAgain {    
     width: max-content;
     padding: 1rem;
-    margin-top: 1rem;
     background-color: greenyellow;
     font-size: 1rem;
 }
@@ -89,7 +113,6 @@ button {
     display: none;
     /* display: flex; */
     flex-direction: row;
-    flex-wrap: wrap;
     gap: .5rem;
     align-items: center;
     justify-content: center;
@@ -102,7 +125,7 @@ figcaption {
     margin: .5rem;
 }
 
-.resultBox {
+#resultBox {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,11 +133,11 @@ figcaption {
     gap: .5rem;
 }
 
-.resultMessage {
+#resultMessage {
     width: fit-content;
     padding: 1rem;
     background-color: bisque;
-    border-radius: 2rem;
+    border-radius: 1rem;
     color: #222;
 }
 
@@ -129,7 +152,7 @@ figcaption {
 }
 
 .draw {
-    background-color: blueviolet;
+    background-color: violet;
     color: bisque;
 }
 
