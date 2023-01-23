@@ -27,20 +27,17 @@ h1 {
 }
 
 #gamebox {
-    background-color: whitesmoke;
-    color: #B05A7A;
-    border: 2rem solid #E4C988;
-    width: auto;
-    height: auto;
-}
-
-form {
     display: flex;
     flex-direction: column;
     gap: 1.3rem;
     align-items: center;
     justify-content: center;
+    width: auto;
+    height: auto;
     padding: 2rem;
+    background-color: whitesmoke;
+    color: #B05A7A;
+    border: 2rem solid #E4C988;
 }
 
 label {
