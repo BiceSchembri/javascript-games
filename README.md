@@ -27,6 +27,11 @@ See [here](https://github.com/becodeorg/GNT-Verou-4/blob/main/1.The-Field/11.Gam
 
 Deployed on [Netlify](https://guessing-game-nr.netlify.app/).
 
+Objective: create a game in which the user has to guess a number and gets alerted with the result.
+The user enters and submits their guess via a form (input).
+A function generates a random number between 1 and 28. An event listener is added to the submit button in the form. An "if...else if" statement allows for three outcomes: correct guess; incorrect guess by 1; incorrect guess by more than 1.
+An alert message informs the user of the result.
+
 ---
 
 #### 1.Rock Paper Scissors
