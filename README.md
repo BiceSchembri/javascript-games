@@ -23,8 +23,6 @@ Objective: create simple games in vanilla JavaScript.
 
 #### 0.Guessing Game
 
-See [here](https://github.com/becodeorg/GNT-Verou-4/blob/main/1.The-Field/11.Games/0.Guessing-game.md) for full explanation and requirements.
-
 Deployed on [Netlify](https://guessing-game-nr.netlify.app/).
 
 **Objective**
@@ -38,8 +36,6 @@ An alert message informs the user of the result.
 ---
 
 #### 1.Rock Paper Scissors
-
-See [here](https://github.com/becodeorg/GNT-Verou-4/blob/main/1.The-Field/11.Games/1.Rock-paper-scissors.md) for full explanation and requirements.
 
 Deployed on [Netlify](https://rock-paper-scissors-gify.netlify.app/).
 
